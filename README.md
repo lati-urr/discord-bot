@@ -42,4 +42,4 @@ mp3は，discord-bot以下(bot.pyとかdictionary.pyとかと同じディレク�
 python bot.py
 ```
 
-**いかがでしたか？**
+[ブログ](https://teokure.net/technology/discord-bot/)
