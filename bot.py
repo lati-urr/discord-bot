@@ -69,14 +69,14 @@ class MyClient(discord.Client):
             try:
                 vc = await channel.connect()
             except Exception as e:
-                await message.channel.send(e)
+                await message.channel.send(str(e))
                 return
             await message.delete()
             mp3 = dictionary.dict.get(message.content)
             try:
                 vc.play(discord.FFmpegPCMAudio(mp3))
             except Exception as e:
-                await message.channel.send(e)
+                await message.channel.send(str(e))
                 await message.guild.voice_client.disconnect()
                 return
             while vc.is_playing():
