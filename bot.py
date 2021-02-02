@@ -22,6 +22,7 @@ def spla2API(rule):
     when = 'schedule'
     url = f'https://spla2.yuu26.com/{match}/{when}'
     r = requests.get(f'https://spla2.yuu26.com/{match}/{when}')
+    locale = datetime.timezone(timedelta(hours=+9), 'JST')
     if r.status_code != 200:
         return r.status_code
     stages = r.json().get('result')
@@ -33,8 +34,8 @@ def spla2API(rule):
         map2_name, map2_img = map2.get('name'), map2.get('image')
         unix_start = stage.get('start_t')
         unix_end = stage.get('end_t')
-        dt_s = datetime.datetime.fromtimestamp(unix_start)
-        dt_e = datetime.datetime.fromtimestamp(unix_end)
+        dt_s = datetime.datetime.fromtimestamp(unix_start, locale)
+        dt_e = datetime.datetime.fromtimestamp(unix_end, locale)
         start = dt_s.strftime('%H')
         end = dt_e.strftime('%H')
         time_disp = f'{start}時〜{end}時'
