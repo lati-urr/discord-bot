@@ -66,10 +66,18 @@ class MyClient(discord.Client):
         if message.content in dictionary.dict:
             if message.guild.voice_client is not None:
                 message.guild.voice_client.disconnect()
-            vc = await channel.connect()
+            try:
+                vc = await channel.connect()
+            except Exception as e:
+                message.channel.send(e)
+                return
             await message.delete()
             mp3 = dictionary.dict.get(message.content)
-            vc.play(discord.FFmpegPCMAudio(mp3))
+            try:
+                vc.play(discord.FFmpegPCMAudio(mp3))
+            except Exception as e:
+                message.channel.send(e)
+                return
             while vc.is_playing():
                 await sleep(1)
             await vc.disconnect()
