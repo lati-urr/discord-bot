@@ -77,6 +77,7 @@ class MyClient(discord.Client):
                 vc.play(discord.FFmpegPCMAudio(mp3))
             except Exception as e:
                 await message.channel.send(e)
+                await message.guild.voice_client.disconnect()
                 return
             while vc.is_playing():
                 await sleep(1)
