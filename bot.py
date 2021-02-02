@@ -22,7 +22,7 @@ def spla2API(rule):
     when = 'schedule'
     url = f'https://spla2.yuu26.com/{match}/{when}'
     r = requests.get(f'https://spla2.yuu26.com/{match}/{when}')
-    locale = datetime.timezone(timedelta(hours=+9), 'JST')
+    locale = datetime.timezone(datetime.timedelta(hours=+9), 'JST')
     if r.status_code != 200:
         return r.status_code
     stages = r.json().get('result')
