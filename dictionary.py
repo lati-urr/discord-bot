@@ -9,5 +9,5 @@ dict = {'すねお' : 'suneo.mp3',
         'よるにかける' : 'yorunikakeru.mp3',
         '夜に駆ける' : 'yorunikakeru.mp3',
         'ぐれんげ' : 'gurenge.mp3',
-        '紅蓮華' : 'gurenge.mp3',
+        'bmbb' : 'bemy.mp3',
         }
